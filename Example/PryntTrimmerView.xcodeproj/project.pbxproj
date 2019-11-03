@@ -209,9 +209,9 @@
 		BA05862D208FE161004E868E /* Classes */ = {
 			isa = PBXGroup;
 			children = (
-				BA05862E208FE161004E868E /* Parents */,
-				BA058631208FE161004E868E /* ThumbSelectorView.swift */,
 				BA058632208FE161004E868E /* .gitkeep */,
+				BA058631208FE161004E868E /* ThumbSelectorView.swift */,
+				BA05862E208FE161004E868E /* Parents */,
 				BA058633208FE161004E868E /* Cropper */,
 				BA058637208FE161004E868E /* Trimmer */,
 			);

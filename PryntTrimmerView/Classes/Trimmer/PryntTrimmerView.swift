@@ -9,6 +9,11 @@
 import AVFoundation
 import UIKit
 
+public struct Config {
+    public static let shared = Config()
+    public var handlerViewBackgroundColor: UIColor = .clear
+}
+
 public protocol TrimmerViewDelegate: class {
     func didChangePositionBar(_ playerTime: CMTime)
     func positionBarStoppedMoving(_ playerTime: CMTime)
@@ -157,6 +162,9 @@ public protocol TrimmerViewDelegate: class {
         rightHandleKnob.widthAnchor.constraint(equalToConstant: 2).isActive = true
         rightHandleKnob.centerYAnchor.constraint(equalTo: rightHandleView.centerYAnchor).isActive = true
         rightHandleKnob.centerXAnchor.constraint(equalTo: rightHandleView.centerXAnchor).isActive = true
+        
+        leftHandleView.backgroundColor = Config.shared.handlerViewBackgroundColor
+        rightHandleView.backgroundColor = Config.shared.handlerViewBackgroundColor
     }
 
     private func setupMaskView() {
