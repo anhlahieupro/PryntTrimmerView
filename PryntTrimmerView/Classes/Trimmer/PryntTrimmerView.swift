@@ -9,11 +9,6 @@
 import AVFoundation
 import UIKit
 
-public struct PryntTrimmerViewConfig {
-    public static var shared = PryntTrimmerViewConfig()
-    public var handlerViewBackgroundColor: UIColor = .clear
-}
-
 public protocol TrimmerViewDelegate: class {
     func didChangePositionBar(_ playerTime: CMTime)
     func positionBarStoppedMoving(_ playerTime: CMTime)
@@ -30,6 +25,12 @@ public protocol TrimmerViewDelegate: class {
 
     // MARK: Color Customization
 
+    @IBInspectable public var handlerViewBackgroundColor: UIColor = .orange {
+        didSet {
+            updateMainColor()
+        }
+    }
+    
     /// The color of the main border of the view
     @IBInspectable public var mainColor: UIColor = UIColor.orange {
         didSet {
@@ -162,9 +163,6 @@ public protocol TrimmerViewDelegate: class {
         rightHandleKnob.widthAnchor.constraint(equalToConstant: 2).isActive = true
         rightHandleKnob.centerYAnchor.constraint(equalTo: rightHandleView.centerYAnchor).isActive = true
         rightHandleKnob.centerXAnchor.constraint(equalTo: rightHandleView.centerXAnchor).isActive = true
-        
-        leftHandleView.backgroundColor = PryntTrimmerViewConfig.shared.handlerViewBackgroundColor
-        rightHandleView.backgroundColor = PryntTrimmerViewConfig.shared.handlerViewBackgroundColor
     }
 
     private func setupMaskView() {
@@ -219,8 +217,8 @@ public protocol TrimmerViewDelegate: class {
 
     private func updateMainColor() {
         trimView.layer.borderColor = mainColor.cgColor
-        leftHandleView.backgroundColor = mainColor
-        rightHandleView.backgroundColor = mainColor
+        leftHandleView.backgroundColor = handlerViewBackgroundColor
+        rightHandleView.backgroundColor = handlerViewBackgroundColor
     }
 
     private func updateHandleColor() {
