@@ -31,6 +31,9 @@ public protocol TrimmerViewDelegate: class {
         }
     }
     
+    public var maskBackgroundColor: UIColor = .white
+    public var maskAlpha: CGFloat = 0.7
+    
     /// The color of the main border of the view
     @IBInspectable public var mainColor: UIColor = UIColor.orange {
         didSet {
@@ -168,8 +171,8 @@ public protocol TrimmerViewDelegate: class {
     private func setupMaskView() {
 
         leftMaskView.isUserInteractionEnabled = false
-        leftMaskView.backgroundColor = .white
-        leftMaskView.alpha = 0.7
+        leftMaskView.backgroundColor = maskBackgroundColor
+        leftMaskView.alpha = maskAlpha
         leftMaskView.translatesAutoresizingMaskIntoConstraints = false
         insertSubview(leftMaskView, belowSubview: leftHandleView)
 
@@ -179,8 +182,8 @@ public protocol TrimmerViewDelegate: class {
         leftMaskView.rightAnchor.constraint(equalTo: leftHandleView.centerXAnchor).isActive = true
 
         rightMaskView.isUserInteractionEnabled = false
-        rightMaskView.backgroundColor = .white
-        rightMaskView.alpha = 0.7
+        rightMaskView.backgroundColor = maskBackgroundColor
+        rightMaskView.alpha = maskAlpha
         rightMaskView.translatesAutoresizingMaskIntoConstraints = false
         insertSubview(rightMaskView, belowSubview: rightHandleView)
 
