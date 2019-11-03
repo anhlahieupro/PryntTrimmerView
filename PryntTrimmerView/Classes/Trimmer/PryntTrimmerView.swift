@@ -25,7 +25,7 @@ public protocol TrimmerViewDelegate: class {
 
     // MARK: Color Customization
 
-    @IBInspectable public var handlerViewBackgroundColor: UIColor = .orange {
+    public var handleBackgroundColor: UIColor = .orange {
         didSet {
             updateMainColor()
         }
@@ -217,8 +217,8 @@ public protocol TrimmerViewDelegate: class {
 
     private func updateMainColor() {
         trimView.layer.borderColor = mainColor.cgColor
-        leftHandleView.backgroundColor = handlerViewBackgroundColor
-        rightHandleView.backgroundColor = handlerViewBackgroundColor
+        leftHandleView.backgroundColor = handleBackgroundColor
+        rightHandleView.backgroundColor = handleBackgroundColor
     }
 
     private func updateHandleColor() {
