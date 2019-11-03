@@ -9,8 +9,8 @@
 import AVFoundation
 import UIKit
 
-public struct Config {
-    public static let shared = Config()
+public struct PryntTrimmerViewConfig {
+    public static var shared = PryntTrimmerViewConfig()
     public var handlerViewBackgroundColor: UIColor = .clear
 }
 
@@ -163,8 +163,8 @@ public protocol TrimmerViewDelegate: class {
         rightHandleKnob.centerYAnchor.constraint(equalTo: rightHandleView.centerYAnchor).isActive = true
         rightHandleKnob.centerXAnchor.constraint(equalTo: rightHandleView.centerXAnchor).isActive = true
         
-        leftHandleView.backgroundColor = Config.shared.handlerViewBackgroundColor
-        rightHandleView.backgroundColor = Config.shared.handlerViewBackgroundColor
+        leftHandleView.backgroundColor = PryntTrimmerViewConfig.shared.handlerViewBackgroundColor
+        rightHandleView.backgroundColor = PryntTrimmerViewConfig.shared.handlerViewBackgroundColor
     }
 
     private func setupMaskView() {
