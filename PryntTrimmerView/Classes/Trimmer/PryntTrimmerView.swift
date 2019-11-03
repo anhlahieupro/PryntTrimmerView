@@ -25,26 +25,34 @@ public protocol TrimmerViewDelegate: class {
 
     // MARK: Color Customization
 
-    public var handleBackgroundColor: UIColor = .orange {
+    @IBInspectable public var handleBackgroundColor: UIColor = .orange {
         didSet {
-            updateMainColor()
+            updateColor()
         }
     }
     
-    public var maskBackgroundColor: UIColor = .white
-    public var maskAlpha: CGFloat = 0.7
+    @IBInspectable public var maskBackgroundColor: UIColor = .white {
+        didSet {
+            updateColor()
+        }
+    }
+    @IBInspectable public var maskAlpha: CGFloat = 0.7 {
+        didSet {
+            updateColor()
+        }
+    }
     
     /// The color of the main border of the view
     @IBInspectable public var mainColor: UIColor = UIColor.orange {
         didSet {
-            updateMainColor()
+            updateColor()
         }
     }
 
     /// The color of the handles on the side of the view
     @IBInspectable public var handleColor: UIColor = UIColor.gray {
         didSet {
-           updateHandleColor()
+           updateColor()
         }
     }
 
@@ -102,8 +110,7 @@ public protocol TrimmerViewDelegate: class {
         setupMaskView()
         setupPositionBar()
         setupGestures()
-        updateMainColor()
-        updateHandleColor()
+        updateColor()
     }
 
     override func constrainAssetPreview() {
@@ -218,15 +225,20 @@ public protocol TrimmerViewDelegate: class {
         rightHandleView.addGestureRecognizer(rightPanGestureRecognizer)
     }
 
-    private func updateMainColor() {
+    private func updateColor() {
         trimView.layer.borderColor = mainColor.cgColor
+        
         leftHandleView.backgroundColor = handleBackgroundColor
         rightHandleView.backgroundColor = handleBackgroundColor
-    }
-
-    private func updateHandleColor() {
+        
         leftHandleKnob.backgroundColor = handleColor
         rightHandleKnob.backgroundColor = handleColor
+        
+        leftMaskView.backgroundColor = maskBackgroundColor
+        leftMaskView.alpha = maskAlpha
+        
+        rightMaskView.backgroundColor = maskBackgroundColor
+        rightMaskView.alpha = maskAlpha
     }
 
     // MARK: - Trim Gestures
