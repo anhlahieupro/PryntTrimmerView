@@ -70,8 +70,8 @@ public protocol TrimmerViewDelegate: class {
     // MARK: Subviews
 
     private let trimView = UIView()
-    private let leftHandleView = HandlerView()
-    private let rightHandleView = HandlerView()
+    public let leftHandleView = HandlerView()
+    public let rightHandleView = HandlerView()
     private let positionBar = UIView()
     private let leftHandleKnob = UIView()
     private let rightHandleKnob = UIView()
